@@ -1,0 +1,9 @@
+@(polls: Array[PollModel])
+
+@main("a") {
+	<p>Latest Polls</p>
+	<br />
+	@for((poll, i) <- polls.zipWithIndex) {
+	<a href="@routes.Poll.index(poll.id, 0)">@poll.title</a><br />
+	}
+}
