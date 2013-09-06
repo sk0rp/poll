@@ -1,0 +1,16 @@
+@(poll: Map[String, Any], pid: Long, qid: Int, pollTitle: String, questions: Array[Map[String, Any]], question: String, answers: Array[String])
+
+@import helper._
+
+@main(question + " (" + (qid + 1) + " of " + questions.size + ") - " + pollTitle) {
+<p>@question</p>
+@form(routes.Poll.index(pid, qid + 1)) {
+	@for((answer, i) <- answers.view.zipWithIndex) {
+	<input type="radio" name="answer" value="@i"> @answer<br>
+	}
+	@if(qid > 0) {
+	<input type="button" value="Previous Question" onclick="location = '@routes.Poll.index(pid, qid - 1)'">
+	}
+	<input type="submit" value="Next Question">
+}
+}

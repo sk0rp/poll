@@ -5,5 +5,9 @@
 # Home page
 GET     /                           controllers.Application.index
 
+# Poll
+GET     /poll/:pid/$qid<[0-9]+>     controllers.Poll.index(pid: Long, qid: Int)
+GET     /poll/:pid/thankyou         controllers.Poll.thankyou(pid: Long)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
