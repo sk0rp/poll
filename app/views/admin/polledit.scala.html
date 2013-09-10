@@ -1,0 +1,60 @@
+@(poll: PollModel, editPollForm: Form[models.PollModel], send: Boolean)
+
+@import helper._
+
+@main("Edit - " + poll.title ) {
+<p>Edit - @poll.title</p>
+
+@if(send){
+<div class="prompt">
+	@if(editPollForm.errors.isEmpty){
+		<p>Zmiany zostały zapisane</p>
+	}
+	@for(error <- editPollForm.errors){
+		<p>Pole @error.key z błędem @error.message</p>
+	}
+</div>
+}
+
+@if(false) {
+<div class="prompt">Zmiany zostały zapisane</div>
+}
+@form(routes.Admin.polleditpost(poll.id)) {
+	<div id="questions">
+		<input type="hidden" name="poll.id" value="@poll.id" />
+		<input type="hidden" name="poll.title" value="@poll.title" />
+		@for((question, i) <- poll.questions.zipWithIndex) {
+		<div class="question">
+			<input type="text" name="poll.question[@i].question" value="@question.text" class="questionInput" />
+			<input type="hidden" name="questionCount" value="@i" class="questionCount" />
+			<span class="questionsButtons">
+				<input type="button" value="Add more answers" class="button addAnswer" />
+				<input type="button" value="Delete question" class="button delQuestion" />
+			</span>
+			<div class="answers">
+				@for(answer <- question.answers) {
+				<input type="text" name="poll.question[@i].answer[]" value="@answer" />
+				}
+				<input type="text" name="poll.question[@i].answer[]" />
+			</div>
+		</div>
+		}
+		<div class="question">
+			<input type="text" name="poll.question[@poll.questions.size].question" class="questionInput" />
+			<input type="hidden" name="questionCount" value="@poll.questions.size" class="questionCount" />
+			<span class="questionsButtons">
+				<input type="button" value="Add more answers" class="button addAnswer" />
+				<input type="button" value="Delete question" class="button delQuestion" />
+			</span>
+			<div class="answers">
+				<input type="text" name="poll.question[@poll.questions.size].answer[]" />
+			</div>
+		</div>
+	</div>
+	<input type="button" value="Add more questions" class="button addQuestion">
+	<div class="buttons">
+		<input type="submit" value="Save changes">
+		<input type="button" value="Quit" onclick="location = '/'">
+	</div>
+}
+}

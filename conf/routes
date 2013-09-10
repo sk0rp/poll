@@ -6,8 +6,12 @@
 GET     /                           controllers.Application.index
 
 # Poll
-GET     /poll/:pid/$qid<[0-9]+>     controllers.Poll.index(pid: Long, qid: Int)
-GET     /poll/:pid/thankyou         controllers.Poll.thankyou(pid: Long)
+GET     /poll/:pid/$qid<[0-9]+>     controllers.Poll.index(pid: Int, qid: Int)
+GET     /poll/:pid/thankyou         controllers.Poll.thankyou(pid: Int)
+
+# Admin
+GET     /admin/polledit/:pid        controllers.Admin.polledit(pid: Int)
+GET     /admin/polleditpost/:pid    controllers.Admin.polleditpost(pid: Int)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

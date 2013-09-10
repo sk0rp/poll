@@ -1,0 +1,28 @@
+html {
+	margin: 0;
+	padding: 0;
+}
+
+.question input {
+	width: 500px;
+	margin: 5px;
+}
+
+.question input.button {
+	width: auto;
+	margin: 5px;
+}
+
+.question .answers input {
+	display: block;
+}
+
+.question .answers {
+	padding-left: 30px;
+}
+.prompt {
+	background-color: yellow;
+	color: black;
+	padding: 5px;
+	margin: 10px 0;
+}

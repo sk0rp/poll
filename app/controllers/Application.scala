@@ -7,10 +7,10 @@ import models._
 object Application extends Controller {
 
 	def index = Action {
-		val polls = Array(
-			PollModel(1, "What Element Are You?", Array(
+		val polls = List(
+			PollModel(1, "What Element Are You?", List(
 				Question("How would you describe yourself (pick the words that MOST describes you)?",
-					Array(
+					List(
 						"Responsible, leader-type",
 						"Intellectual, funny",
 						"Secretive, spiritual",
@@ -18,7 +18,7 @@ object Application extends Controller {
 					)
 				),
 				Question("Something you would enjoy would be...",
-					Array(
+					List(
 						"Working on your latest project",
 						"Doing something Artsy or musical",
 						"Researching something you enjoy",
@@ -26,7 +26,7 @@ object Application extends Controller {
 					)
 				),
 				Question("If you could pick an animal, which would you pick?",
-					Array(
+					List(
 						"Dog or a Cat: much loved, no worries and fun loving!",
 						"A dolphin or some kind of sea creature: loves the water, happy, smart",
 						"Bald Eagle, or a Horse: adventurous, wild, free",
@@ -34,9 +34,9 @@ object Application extends Controller {
 					)
 				)
 			)),
-			PollModel(2, "What Element Are You?", Array(
+			PollModel(2, "What Element Are You?", List(
 				Question("How would you describe yourself (pick the words that MOST describes you)?",
-					Array(
+					List(
 						"Responsible, leader-type",
 						"Intellectual, funny",
 						"Secretive, spiritual",
@@ -44,7 +44,7 @@ object Application extends Controller {
 					)
 				),
 				Question("Something you would enjoy would be...",
-					Array(
+					List(
 						"Working on your latest project",
 						"Doing something Artsy or musical",
 						"Researching something you enjoy",
@@ -52,7 +52,7 @@ object Application extends Controller {
 					)
 				),
 				Question("If you could pick an animal, which would you pick?",
-					Array(
+					List(
 						"Dog or a Cat: much loved, no worries and fun loving!",
 						"A dolphin or some kind of sea creature: loves the water, happy, smart",
 						"Bald Eagle, or a Horse: adventurous, wild, free",
@@ -60,9 +60,9 @@ object Application extends Controller {
 					)
 				)
 			)),
-			PollModel(3, "What Element Are You?", Array(
+			PollModel(3, "What Element Are You?", List(
 				Question("How would you describe yourself (pick the words that MOST describes you)?",
-					Array(
+					List(
 						"Responsible, leader-type",
 						"Intellectual, funny",
 						"Secretive, spiritual",
@@ -70,7 +70,7 @@ object Application extends Controller {
 					)
 				),
 				Question("Something you would enjoy would be...",
-					Array(
+					List(
 						"Working on your latest project",
 						"Doing something Artsy or musical",
 						"Researching something you enjoy",
@@ -78,7 +78,7 @@ object Application extends Controller {
 					)
 				),
 				Question("If you could pick an animal, which would you pick?",
-					Array(
+					List(
 						"Dog or a Cat: much loved, no worries and fun loving!",
 						"A dolphin or some kind of sea creature: loves the water, happy, smart",
 						"Bald Eagle, or a Horse: adventurous, wild, free",
