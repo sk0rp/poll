@@ -41,33 +41,23 @@
 			<div class="question">
 				<input type="text" name="poll.question[@i].question" value="@question.text" class="questionInput" />
 				<input type="hidden" name="questionCount" value="@i" class="questionCount" />
-				<div class="answers">
+				<div class="answersCont">
 					<div class="field">
 						<input type="checkbox" name="poll.question[@i].multiple" id="poll.question[@i].multiple" class="checkbox" />
 						<label for="poll.question[@i].multiple" class="label_checkbox">Allow Multiple Answer Selection</label>
 					</div>
-					@for(answer <- question.answers) {
-					<input type="text" name="poll.question[@i].answer[]" value="@answer" />
-					}
-					<input type="text" name="poll.question[@i].answer[]" />
+					<div class="answers">
+						@for(answer <- question.answers) {
+						<input type="text" name="poll.question[@i].answer[]" value="@answer" />
+						}
+					</div>
 				</div>
 				<div class="questionsButtons">
-					<input type="button" value="New Answer" class="button" />
-					<input type="button" value="Add New Question Bellow" class="button" />
+					<input type="button" value="New Answer" class="button addAnswer" />
+					<input type="button" value="Add New Question Bellow" class="button addQuestion" />
 				</div>
 			</div>
 			}
-			<div class="question">
-				<input type="text" name="poll.question[@poll.questions.size].question" class="questionInput" />
-				<input type="hidden" name="questionCount" value="@poll.questions.size" class="questionCount" />
-				<div class="answers">
-					<input type="text" name="poll.question[@poll.questions.size].answer[]" />
-				</div>
-				<div class="questionsButtons">
-					<input type="button" value="New Answer" class="button" />
-					<input type="button" value="Add New Question Bellow" class="button" />
-				</div>
-			</div>
 		</div>
 		<div class="buttons">
 			<input type="submit" value="Save Changes" class="button">
