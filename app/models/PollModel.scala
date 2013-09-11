@@ -8,7 +8,7 @@ class PollModel {
 
 object PollModel {
  
-	def apply(id: Int, title: String, questions: List[Question]) = {
+	def apply(id: Int = 0, title: String = "", questions: List[Question] = List()) = {
 		val poll = new PollModel
 		poll.id = id
 		poll.title = title

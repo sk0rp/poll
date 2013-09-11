@@ -1,9 +1,13 @@
 @(polls: List[PollModel])
 
 @main("a") {
-	<p>Latest Polls</p>
-	<br />
-	@for((poll, i) <- polls.zipWithIndex) {
-	<a href="@routes.Poll.index(poll.id, 0)">@poll.title</a> <input type="button" value="Edit" onclick="location = '@routes.Poll.polledit(poll.id)'"><br />
-	}
+	<header><h1>Latest Polls</h1></header>	
+
+	<div class="pollsList">
+		@for((poll, i) <- polls.zipWithIndex) {
+		<a href="@routes.Poll.index(poll.id, 0)">@poll.title</a>
+		}
+	</div>
+	<a href="@routes.Application.admin">Administration</a>
+	
 }

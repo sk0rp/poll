@@ -62,7 +62,10 @@ object Poll extends Controller {
 			)(PollModel.apply)(PollModel.unapply)
 	)
 	
-	
+	def pollnew = Action {
+		val poll = PollModel()
+		Ok(views.html.poll.polledit(poll, editPollForm, false))
+	}
 	
 	def polledit(pid: Int) = Action {
 		val poll = PollModel(1, "What Element Are You?", List(

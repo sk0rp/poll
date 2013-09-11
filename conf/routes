@@ -4,10 +4,12 @@
 
 # Home page
 GET     /                                   controllers.Application.index
+GET     /admin                              controllers.Application.admin
 
 # Poll
 GET     /poll/$pid<[0-9]+>/$qid<[0-9]+>     controllers.Poll.index(pid: Int, qid: Int)
 GET     /poll/$pid<[0-9]+>/thankyou         controllers.Poll.thankyou(pid: Int)
+GET     /poll/pollnew                       controllers.Poll.pollnew
 GET     /poll/polledit/$pid<[0-9]+>         controllers.Poll.polledit(pid: Int)
 GET     /poll/polleditpost/$pid<[0-9]+>     controllers.Poll.polleditpost(pid: Int)
 

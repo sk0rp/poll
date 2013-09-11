@@ -2,8 +2,8 @@
 
 @import helper._
 
-@main("Edit - " + poll.title ) {
-<p>Edit - @poll.title</p>
+@main("Edit - " + poll.title) {
+<header><h1>Poll Details</h1></header>
 
 @if(send){
 <div class="prompt">
@@ -16,45 +16,63 @@
 </div>
 }
 
-@if(false) {
-<div class="prompt">Zmiany zostały zapisane</div>
-}
 @form(routes.Poll.polleditpost(poll.id)) {
-	<div id="questions">
+	<div id="pollEdit">
 		<input type="hidden" name="poll.id" value="@poll.id" />
-		<input type="hidden" name="poll.title" value="@poll.title" />
-		@for((question, i) <- poll.questions.zipWithIndex) {
-		<div class="question">
-			<input type="text" name="poll.question[@i].question" value="@question.text" class="questionInput" />
-			<input type="hidden" name="questionCount" value="@i" class="questionCount" />
-			<span class="questionsButtons">
-				<input type="button" value="Add more answers" class="button addAnswer" />
-				<input type="button" value="Delete question" class="button delQuestion" />
-			</span>
-			<div class="answers">
-				@for(answer <- question.answers) {
-				<input type="text" name="poll.question[@i].answer[]" value="@answer" />
-				}
-				<input type="text" name="poll.question[@i].answer[]" />
+		<div class="field">
+			<label for="poll.title">Title:</label>
+			<input type="text" name="poll.title" id="poll.title" value="@poll.title">
+		</div>
+		<div class="field">
+			<label for="poll.description">Description:</label>
+			<textarea name="poll.description" id="poll.description"></textarea>
+		</div>
+		
+		<div class="buttons">
+			<input type="button" value="Edit Poll" class="button" onclick="location = '#'" />
+			<input type="button" value="Show Statistics" class="button" onclick="location = '#'" />
+		</div>
+		
+		<div id="questions">
+			<header>
+				<h2>Questions and Answers:</h2>
+			</header>
+			@for((question, i) <- poll.questions.zipWithIndex) {
+			<div class="question">
+				<input type="text" name="poll.question[@i].question" value="@question.text" class="questionInput" />
+				<input type="hidden" name="questionCount" value="@i" class="questionCount" />
+				<div class="answers">
+					<div class="field">
+						<input type="checkbox" name="poll.question[@i].multiple" id="poll.question[@i].multiple" class="checkbox" />
+						<label for="poll.question[@i].multiple" class="label_checkbox">Allow Multiple Answer Selection</label>
+					</div>
+					@for(answer <- question.answers) {
+					<input type="text" name="poll.question[@i].answer[]" value="@answer" />
+					}
+					<input type="text" name="poll.question[@i].answer[]" />
+				</div>
+				<div class="questionsButtons">
+					<input type="button" value="New Answer" class="button" />
+					<input type="button" value="Add New Question Bellow" class="button" />
+				</div>
+			</div>
+			}
+			<div class="question">
+				<input type="text" name="poll.question[@poll.questions.size].question" class="questionInput" />
+				<input type="hidden" name="questionCount" value="@poll.questions.size" class="questionCount" />
+				<div class="answers">
+					<input type="text" name="poll.question[@poll.questions.size].answer[]" />
+				</div>
+				<div class="questionsButtons">
+					<input type="button" value="New Answer" class="button" />
+					<input type="button" value="Add New Question Bellow" class="button" />
+				</div>
 			</div>
 		</div>
-		}
-		<div class="question">
-			<input type="text" name="poll.question[@poll.questions.size].question" class="questionInput" />
-			<input type="hidden" name="questionCount" value="@poll.questions.size" class="questionCount" />
-			<span class="questionsButtons">
-				<input type="button" value="Add more answers" class="button addAnswer" />
-				<input type="button" value="Delete question" class="button delQuestion" />
-			</span>
-			<div class="answers">
-				<input type="text" name="poll.question[@poll.questions.size].answer[]" />
-			</div>
+		<div class="buttons">
+			<input type="submit" value="Save Changes" class="button">
+			<input type="button" value="Discard Changes" onclick="location = '@routes.Application.admin'" class="button">
 		</div>
-	</div>
-	<input type="button" value="Add more questions" class="button addQuestion">
-	<div class="buttons">
-		<input type="submit" value="Save changes">
-		<input type="button" value="Quit" onclick="location = '/'">
 	</div>
 }
 }

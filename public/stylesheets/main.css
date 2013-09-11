@@ -3,18 +3,50 @@ html {
 	padding: 0;
 }
 
-.question input {
+#pollEdit input, #pollEdit textarea {
 	width: 500px;
-	margin: 5px;
+	margin: 5px 0;
 }
 
-.question input.button {
+#pollEdit .field label {
+	vertical-align: top;
+	margin: 5px 0;
+	display:inline-block;
+	width: 100px;
+	text-align: right;
+	font-size: 80%;
+}
+
+#pollEdit .field .label_checkbox {
+	margin: 5px 0;
+	display: auto;
 	width: auto;
-	margin: 5px;
+	text-align: left;
+	vertical-align: bottom;
+}
+
+#pollEdit input.button {
+	width: auto;
+	margin: 0;
+}
+
+#questions {
+	border: black 1px dotted;
+	width: 590px;
+	padding: 10px;
+}
+
+.question {
+	margin: 0 0 10px;
 }
 
 .question .answers input {
 	display: block;
+}
+
+.question .answers input.checkbox {
+	display: inline;
+	width: auto;
 }
 
 .question .answers {
@@ -25,4 +57,35 @@ html {
 	color: black;
 	padding: 5px;
 	margin: 10px 0;
+}
+
+.pollsList {
+	margin-bottom: 20px;
+}
+
+.pollsList a {
+	display: block;
+}
+
+.buttons {
+	margin: 20px 0;
+}
+
+header {
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	font-size: 200%;
+	margin: 0;
+	padding: 10px 0;
+	font-weight: bold;
+}
+
+h2 {
+	font-size: 100%;
+	margin: 0;
+	padding: 5px 0;
+	font-weight: bold;
 }
