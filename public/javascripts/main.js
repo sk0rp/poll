@@ -21,8 +21,10 @@ $(document).ready(function(){
 	
 	var addQuestion = function() {
 		var prev = $(this).parent().parent();
-		var id = getQuestionId(prev);
-		alert(id);
+		var id = getQuestionId(prev) + 1;
+		prev.nextAll().each(function() {
+			incrementId($(this));
+		});
         var divQuestion = $('<div class="question" />');
 		divQuestion.append($('<input type="text" name="poll.question[' + id + '].question" class="questionInput" />'));
 		divQuestion.append($('<input type="hidden" name="questionCount" value="' + id + '" class="questionCount" />'));
@@ -42,9 +44,7 @@ $(document).ready(function(){
 		divQuestionsButtons.append(buttonAddQuestion);
 		divQuestion.append(divQuestionsButtons);
 		(prev).after(divQuestion.fadeIn('slow'));
-		prev.nextAll().each(function() {
-			incrementId($(this));
-		});
+		
     };
 	$('.addQuestion').click(addQuestion);
 

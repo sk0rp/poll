@@ -7,8 +7,9 @@ import models._
 object Application extends Controller {
 
 	val polls = List(
-		PollModel(1, "What Element Are You?", List(
+		PollModel(1, "What Element Are You?", "Description", List(
 			Question("How would you describe yourself (pick the words that MOST describes you)?",
+				false,
 				List(
 					"Responsible, leader-type",
 					"Intellectual, funny",
@@ -17,6 +18,7 @@ object Application extends Controller {
 				)
 			),
 			Question("Something you would enjoy would be...",
+				false,
 				List(
 					"Working on your latest project",
 					"Doing something Artsy or musical",
@@ -25,6 +27,7 @@ object Application extends Controller {
 				)
 			),
 			Question("If you could pick an animal, which would you pick?",
+				false,
 				List(
 					"Dog or a Cat: much loved, no worries and fun loving!",
 					"A dolphin or some kind of sea creature: loves the water, happy, smart",
@@ -33,8 +36,9 @@ object Application extends Controller {
 				)
 			)
 		)),
-		PollModel(2, "What Element Are You?", List(
+		PollModel(2, "What Element Are You?", "Description", List(
 			Question("How would you describe yourself (pick the words that MOST describes you)?",
+				false,
 				List(
 					"Responsible, leader-type",
 					"Intellectual, funny",
@@ -43,6 +47,7 @@ object Application extends Controller {
 				)
 			),
 			Question("Something you would enjoy would be...",
+				false,
 				List(
 					"Working on your latest project",
 					"Doing something Artsy or musical",
@@ -51,6 +56,7 @@ object Application extends Controller {
 				)
 			),
 			Question("If you could pick an animal, which would you pick?",
+				false,
 				List(
 					"Dog or a Cat: much loved, no worries and fun loving!",
 					"A dolphin or some kind of sea creature: loves the water, happy, smart",
@@ -59,8 +65,9 @@ object Application extends Controller {
 				)
 			)
 		)),
-		PollModel(3, "What Element Are You?", List(
+		PollModel(3, "What Element Are You?", "Description", List(
 			Question("How would you describe yourself (pick the words that MOST describes you)?",
+				false,
 				List(
 					"Responsible, leader-type",
 					"Intellectual, funny",
@@ -69,6 +76,7 @@ object Application extends Controller {
 				)
 			),
 			Question("Something you would enjoy would be...",
+				false,
 				List(
 					"Working on your latest project",
 					"Doing something Artsy or musical",
@@ -77,6 +85,7 @@ object Application extends Controller {
 				)
 			),
 			Question("If you could pick an animal, which would you pick?",
+				false,
 				List(
 					"Dog or a Cat: much loved, no worries and fun loving!",
 					"A dolphin or some kind of sea creature: loves the water, happy, smart",
