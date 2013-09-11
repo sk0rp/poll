@@ -2,15 +2,19 @@
 
 @import helper._
 
-@main(poll.questions(qid).text + " (" + (qid + 1) + " of " + poll.questions.size + ") - " + poll.title) {
+@main(poll.questions(qid).text + " (" + (qid + 1) + " of " + poll.questions.size + ") - " + poll.title){
 <p>@poll.questions(qid).text</p>
-@form(routes.Poll.index(pid, qid + 1)) {
-	@for((answer, i) <- poll.questions(qid).answers.view.zipWithIndex) {
+@form(routes.Poll.index(pid, qid + 1)){
+	@for((answer, i) <- poll.questions(qid).answers.view.zipWithIndex){
 	<input type="radio" name="answer" value="@i"> @answer<br>
 	}
-	@if(qid > 0) {
+	@if(qid > 0){
 	<input type="button" value="Previous Question" onclick="location = '@routes.Poll.index(pid, qid - 1)'">
 	}
+	@if(qid < poll.questions.size - 1){
 	<input type="submit" value="Next Question">
+	} else {
+	<input type="submit" value="Finish">
+	}
 }
 }
