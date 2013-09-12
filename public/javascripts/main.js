@@ -7,8 +7,9 @@ $(document).ready(function(){
 	var incrementId = function(oDiv) {
 		var newId = getQuestionId(oDiv) + 1;
 		
-		oDiv.find('input:text').each(function() {
+		oDiv.find('input:text, input:checkbox').each(function() {
 			$(this).prop('name', $(this).prop('name').replace(/([\d])+/, newId));
+			$(this).prop('id', $(this).prop('id').replace(/([\d])+/, newId));
 		});
 		oDiv.find('.questionCount').val(newId);
 	};
