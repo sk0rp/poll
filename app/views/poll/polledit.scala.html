@@ -37,6 +37,25 @@
 			<header>
 				<h2>Questions and Answers:</h2>
 			</header>
+			@if(poll.questions.isEmpty) {
+			<div class="question">
+				<input type="text" name="poll.question[0].question" class="questionInput" />
+				<input type="hidden" name="questionCount" value="0" class="questionCount" />
+				<div class="answersCont">
+					<div class="field">
+						<input type="checkbox" name="poll.question[0].multiple" id="poll.question[0].multiple" value="true" class="checkbox" />
+						<label for="poll.question[0].multiple" class="label_checkbox">Allow Multiple Answer Selection</label>
+					</div>
+					<div class="answers">
+						<input type="text" name="poll.question[0].answer[]" />
+					</div>
+				</div>
+				<div class="questionsButtons">
+					<input type="button" value="New Answer" class="button addAnswer" />
+					<input type="button" value="Add New Question Bellow" class="button addQuestion" />
+				</div>
+			</div>
+			}
 			@for((question, i) <- poll.questions.zipWithIndex) {
 			<div class="question">
 				<input type="text" name="poll.question[@i].question" value="@question.text" class="questionInput" />
