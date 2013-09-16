@@ -31,7 +31,7 @@ $(document).ready(function(){
 		divQuestion.append($('<input type="hidden" name="questionCount" value="' + id + '" class="questionCount" />'));
 		var divAnswersCont = $('<div class="answersCont" />');
 		var divField = $('<div class="field">');
-		divField.append($('<input type="checkbox" name="poll.question[' + id + '].multiple" id="poll.question[' + id + '].multiple" class="checkbox" />'));
+		divField.append($('<input type="checkbox" name="poll.question[' + id + '].multiple" id="poll.question[' + id + '].multiple" value="true" class="checkbox" />'));
 		divField.append($('<label for="poll.question[' + id + '].multiple" class="label_checkbox">Allow Multiple Answer Selection</label>'));
 		var divAnswers = $('<div class="answers" />');
 		divAnswers.append($('<input type="text" name="poll.question[' + id + '].answer[]" />'));
