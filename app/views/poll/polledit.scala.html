@@ -62,7 +62,7 @@
 				<input type="hidden" name="questionCount" value="@i" class="questionCount" />
 				<div class="answersCont">
 					<div class="field">
-						<input type="checkbox" name="poll.question[@i].multiple" id="poll.question[@i].multiple" value="true" class="checkbox" @(if(question.multiple) "checked=\"checked\"") />
+						<input type="checkbox" name="poll.question[@i].multiple" id="poll.question[@i].multiple" value="true" class="checkbox" @if(question.multiple){checked="checked"} />
 						<label for="poll.question[@i].multiple" class="label_checkbox">Allow Multiple Answer Selection</label>
 					</div>
 					<div class="answers">

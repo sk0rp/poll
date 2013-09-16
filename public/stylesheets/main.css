@@ -44,7 +44,7 @@ html {
 	display: block;
 }
 
-.question .answers input.checkbox {
+#pollEdit .question input.checkbox {
 	display: inline;
 	width: auto;
 }
