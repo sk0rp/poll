@@ -29,8 +29,8 @@
 		</div>
 		
 		<div class="buttons">
-			<input type="button" value="Edit Poll" class="button" onclick="location = '#'" />
-			<input type="button" value="Show Statistics" class="button" onclick="location = '#'" />
+			<input type="button" value="Edit Poll" class="button" onclick="location = '#'" disabled="disabled" />
+			<input type="button" value="Show Statistics" class="button" onclick="location = '@routes.Poll.pollstat(poll.id)'" />
 		</div>
 		
 		<div id="questions">

@@ -12,6 +12,7 @@ GET     /poll/$pid<[0-9]+>/thankyou         controllers.Poll.thankyou(pid: Int)
 GET     /poll/pollnew                       controllers.Poll.pollnew
 GET     /poll/polledit/$pid<[0-9]+>         controllers.Poll.polledit(pid: Int)
 GET     /poll/polleditpost/$pid<[0-9]+>     controllers.Poll.polleditpost(pid: Int)
+GET     /poll/pollstat/$pid<[0-9]+>         controllers.Poll.pollstat(pid: Int)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                       controllers.Assets.at(path="/public", file)

@@ -89,3 +89,8 @@ h2 {
 	padding: 5px 0;
 	font-weight: bold;
 }
+
+svg {
+	display: block;
+	margin: 5px;
+}

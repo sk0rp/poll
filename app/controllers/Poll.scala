@@ -144,5 +144,41 @@ object Poll extends Controller {
 		)
 		
 	}
+	
+	def pollstat(pid: Int) = Action {
+		val poll = PollModel(1, "What Element Are You?", "Description", List(
+			Question("How would you describe yourself (pick the words that MOST describes you)?",
+				false,
+				List(
+					"Responsible, leader-type",
+					"Intellectual, funny",
+					"Secretive, spiritual",
+					"Kind-hearted, creative"
+				)
+			),
+			Question("Something you would enjoy would be...",
+				false,
+				List(
+					"Working on your latest project",
+					"Doing something Artsy or musical",
+					"Researching something you enjoy",
+					"Doing a quiet, private activity"
+				)
+			),
+			Question("If you could pick an animal, which would you pick?",
+				false,
+				List(
+					"Dog or a Cat: much loved, no worries and fun loving!",
+					"A dolphin or some kind of sea creature: loves the water, happy, smart",
+					"Bald Eagle, or a Horse: adventurous, wild, free",
+					"A Tiger or Falcon: left alone, brooding, deadly"
+				)
+			)
+		))
+	
+		val stat = List(List(7, 3, 2, 10), List(8, 8, 0, 6), List(7, 2, 8, 5))
+		
+		Ok(views.html.poll.pollstat(poll, stat))
+	}
 
 }

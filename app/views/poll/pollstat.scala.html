@@ -1,0 +1,128 @@
+@(poll: PollModel, stat: List[List[Int]])
+
+@import helper._
+
+@main("Edit - " + poll.title) {
+<header><h1>Poll Details</h1></header>
+
+<div id="pollEdit">
+	<div class="field">
+		<label for="poll.title">Title:</label>
+		<input type="text" name="poll.title" id="poll.title" value="@poll.title" disabled="disabled" />
+	</div>
+	<div class="field">
+		<label for="poll.description">Description:</label>
+		<textarea name="poll.description" id="poll.description" disabled="disabled">@poll.description</textarea>
+	</div>
+
+	<div class="buttons">
+		<input type="button" value="Edit Poll" class="button" onclick="location = '@routes.Poll.polledit(poll.id)'" />
+		<input type="button" value="Show Statistics" class="button" onclick="location = '#'" disabled="disabled" />
+	</div>
+	
+	<select name="poll.questions" id="poll.questions" onchange="chart.update(data[this.value])">
+		@for((question, i) <- poll.questions.zipWithIndex){
+		@if(i == 1) {
+		<option value="@i">@short(question.text)</option>
+		} else {
+		<option value="@i">@short(question.text)</option>
+		}
+		}
+	</select> 
+	<script>
+		var data = [
+			@for((question, qId) <- poll.questions.zipWithIndex) {
+				@if(qId != 0) {
+					,
+				}
+				[
+				@for((answer, aId) <- question.answers.zipWithIndex) {
+					@if(aId != 0) {
+						,
+					}
+					{"label":"@short(answer, 40)", "value": @stat(qId)(aId)}
+				}
+				]
+			}
+		]
+		
+//		var data = [
+//			[{"label":"A_0", "value": 7}, {"label":"A_1", "value": 3}, {"label":"A_2", "value": 2}, {"label":"A_3", "value": 10}],
+//			[{"label":"B_0", "value": 8}, {"label":"B_1", "value": 8}, {"label":"B_2", "value": 0}, {"label":"B_3", "value": 6}],
+//			[{"label":"C_0", "value": 7}, {"label":"C_1", "value": 2}, {"label":"C_2", "value": 8}, {"label":"C_3", "value": 5}, {"label":"C_4", "value": 5}, {"label":"C_5", "value": 5}]
+//		]
+		
+		
+		var chart = pieChart(data[0], "body").draw();
+		
+		function pieChart(initData, container) {
+			var that = {};
+			var width = 300;
+			var height = width;
+			var radius = width / 2;
+			var color = d3.scale.category20c();
+			var svg, arc, pie, path, legend;
+			
+			that.draw = function() {
+				svg = d3.select(container).append("svg:svg")
+					.attr("width", width)
+					.attr("height", height)
+					.append("svg:g")
+						.attr("transform", "translate(" + radius + "," + radius + ")");
+				
+				arc = d3.svg.arc()
+					.outerRadius(radius);
+				
+				pie = d3.layout.pie()
+					.value(function(d) { return d.value; });
+				
+				legend = d3.select("body").append("svg")
+					.attr("class", "legend")
+					.attr("width", width)
+					.attr("height", width);
+				
+				that.update(initData);
+				
+				return that;
+			}
+			
+			that.update = function(data) {
+				path = svg.datum(data).selectAll("path")
+					.data(pie);
+					
+				path.enter().append("path");
+						
+				path.attr("fill", function(d, i) { return color(i); } )
+					.attr("d", arc);
+				
+				path.exit().remove();
+				
+				lg = legend.selectAll("g")
+					.data(data);
+				
+				var lgNew = lg.enter().append("g")
+					.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+			
+				lgNew.append("rect")
+					.attr("width", 18)
+					.attr("height", 18)
+					.style("fill", function(d, i) { return color(i); });
+
+				lgNew.append("text")
+					.attr("x", 24)
+					.attr("y", 9)
+					.attr("dy", ".35em");
+				
+				lg.select("text")
+					.text(function(d) { return d.label; });
+				
+				
+				lg.exit().remove();
+			}
+			
+			return that;
+		}
+
+	</script>
+</div>
+}
