@@ -46,13 +46,6 @@
 			}
 		]
 		
-//		var data = [
-//			[{"label":"A_0", "value": 7}, {"label":"A_1", "value": 3}, {"label":"A_2", "value": 2}, {"label":"A_3", "value": 10}],
-//			[{"label":"B_0", "value": 8}, {"label":"B_1", "value": 8}, {"label":"B_2", "value": 0}, {"label":"B_3", "value": 6}],
-//			[{"label":"C_0", "value": 7}, {"label":"C_1", "value": 2}, {"label":"C_2", "value": 8}, {"label":"C_3", "value": 5}, {"label":"C_4", "value": 5}, {"label":"C_5", "value": 5}]
-//		]
-		
-		
 		var chart = pieChart(data[0], "body").draw();
 		
 		function pieChart(initData, container) {
@@ -116,8 +109,9 @@
 				lg.select("text")
 					.text(function(d) { return d.label; });
 				
-				
 				lg.exit().remove();
+				
+				return that;
 			}
 			
 			return that;
