@@ -16,7 +16,7 @@ $(document).ready(function(){
 	
 	var addAnswer = function() {
 		var count = $(this).parent().parent().find('.questionCount').val();
-		$('<input type="text" name="poll.question[' + count + '].answer[]" style="display: block" />').fadeIn('slow').appendTo($(this).parent().parent().find('.answers'));
+		$('<input type="text" name="poll.questions[' + count + '].answers[]" style="display: block" />').fadeIn('slow').appendTo($(this).parent().parent().find('.answers'));
 	};
     $('.addAnswer').click(addAnswer);
 	
@@ -27,14 +27,14 @@ $(document).ready(function(){
 			incrementId($(this));
 		});
         var divQuestion = $('<div class="question" />');
-		divQuestion.append($('<input type="text" name="poll.question[' + id + '].question" class="questionInput" />'));
+		divQuestion.append($('<input type="text" name="poll.questions[' + id + '].question" class="questionInput" />'));
 		divQuestion.append($('<input type="hidden" name="questionCount" value="' + id + '" class="questionCount" />'));
 		var divAnswersCont = $('<div class="answersCont" />');
 		var divField = $('<div class="field">');
-		divField.append($('<input type="checkbox" name="poll.question[' + id + '].multiple" id="poll.question[' + id + '].multiple" value="true" class="checkbox" />'));
-		divField.append($('<label for="poll.question[' + id + '].multiple" class="label_checkbox">Allow Multiple Answer Selection</label>'));
+		divField.append($('<input type="checkbox" name="poll.questions[' + id + '].multiple" id="poll.questions[' + id + '].multiple" value="true" class="checkbox" />'));
+		divField.append($('<label for="poll.questions[' + id + '].multiple" class="label_checkbox">Allow Multiple Answer Selection</label>'));
 		var divAnswers = $('<div class="answers" />');
-		divAnswers.append($('<input type="text" name="poll.question[' + id + '].answer[]" />'));
+		divAnswers.append($('<input type="text" name="poll.questions[' + id + '].answers[]" />'));
 		divAnswersCont.append(divField);
 		divAnswersCont.append(divAnswers);
 		divQuestion.append(divAnswersCont);

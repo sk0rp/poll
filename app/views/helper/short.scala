@@ -1,3 +1,6 @@
+/*
+ * @todo check if it can be put in package object
+ */
 package views.html.helper
 
 object short {

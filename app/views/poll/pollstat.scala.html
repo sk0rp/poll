@@ -17,7 +17,7 @@
 
 	<div class="buttons">
 		<input type="button" value="Edit Poll" class="button" onclick="location = '@routes.Poll.polledit(poll.id)'" />
-		<input type="button" value="Show Statistics" class="button" onclick="location = '#'" disabled="disabled" />
+		<input type="button" value="Show Statistics" class="button" disabled="disabled" />
 	</div>
 	
 	<select name="poll.questions" id="poll.questions" onchange="chart.update(data[this.value])">

@@ -29,8 +29,13 @@
 		</div>
 		
 		<div class="buttons">
-			<input type="button" value="Edit Poll" class="button" onclick="location = '#'" disabled="disabled" />
+			<input type="button" value="Edit Poll" class="button" disabled="disabled" />
+			@if(poll.id > 0) {
 			<input type="button" value="Show Statistics" class="button" onclick="location = '@routes.Poll.pollstat(poll.id)'" />
+			} else {
+			<input type="button" value="Show Statistics" class="button" disabled="disabled" />
+			}
+			
 		</div>
 		
 		<div id="questions">
@@ -39,15 +44,15 @@
 			</header>
 			@if(poll.questions.isEmpty) {
 			<div class="question">
-				<input type="text" name="poll.question[0].question" class="questionInput" />
+				<input type="text" name="poll.questions[0].question" class="questionInput" />
 				<input type="hidden" name="questionCount" value="0" class="questionCount" />
 				<div class="answersCont">
 					<div class="field">
-						<input type="checkbox" name="poll.question[0].multiple" id="poll.question[0].multiple" value="true" class="checkbox" />
-						<label for="poll.question[0].multiple" class="label_checkbox">Allow Multiple Answer Selection</label>
+						<input type="checkbox" name="poll.questions[0].multiple" id="poll.questions[0].multiple" value="true" class="checkbox" />
+						<label for="poll.questions[0].multiple" class="label_checkbox">Allow Multiple Answer Selection</label>
 					</div>
 					<div class="answers">
-						<input type="text" name="poll.question[0].answer[]" />
+						<input type="text" name="poll.questions[0].answers[]" />
 					</div>
 				</div>
 				<div class="questionsButtons">
@@ -58,16 +63,16 @@
 			}
 			@for((question, i) <- poll.questions.zipWithIndex) {
 			<div class="question">
-				<input type="text" name="poll.question[@i].question" value="@question.text" class="questionInput" />
+				<input type="text" name="poll.questions[@i].question" value="@question.text" class="questionInput" />
 				<input type="hidden" name="questionCount" value="@i" class="questionCount" />
 				<div class="answersCont">
 					<div class="field">
-						<input type="checkbox" name="poll.question[@i].multiple" id="poll.question[@i].multiple" value="true" class="checkbox" @if(question.multiple){checked="checked"} />
-						<label for="poll.question[@i].multiple" class="label_checkbox">Allow Multiple Answer Selection</label>
+						<input type="checkbox" name="poll.questions[@i].multiple" id="poll.questions[@i].multiple" value="true" class="checkbox" @if(question.multiple){checked="checked"} />
+						<label for="poll.questions[@i].multiple" class="label_checkbox">Allow Multiple Answer Selection</label>
 					</div>
 					<div class="answers">
 						@for(answer <- question.answers) {
-						<input type="text" name="poll.question[@i].answer[]" value="@answer" />
+						<input type="text" name="poll.questions[@i].answers[]" value="@answer" />
 						}
 					</div>
 				</div>
